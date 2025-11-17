@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 export default function ComingSoon({
-  logo = "src/assets/logo png1.png",
+  logo = "/logo png1.png",
   instagram = "https://www.instagram.com/rent.setters/",
   facebook = "https://www.facebook.com/profile.php?id=61583524947267",
   whatsapp = "https://wa.me/918075088842",
