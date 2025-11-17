@@ -15,7 +15,7 @@ function NavItem({ label, href }) {
     >
       {/* Text with bounce */}
       <motion.span
-        whileHover={{ y: -3 }} // bounce upward slightly
+        whileHover={{ y: -3 }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
         className="inline-block"
       >
@@ -54,24 +54,44 @@ export default function Navbar() {
       }`}
     >
       <div className="max-w-full mx-auto px-6 py-5 flex items-center justify-between">
+        
         {/* LEFT: Logo + Name */}
         <a href="#">
           <div className="flex items-center gap-3">
-        
-              <img
-                src="/logo png1.png"
-                alt="RentSetters Logo"
-                className="w-10 h-10 object-cover"
-              />
-              <span
-                className="text-white font-bold text-xl tracking-wide"
-                style={{ fontFamily: "MyFont" }}
-              >
-                RentSetters
-              </span>
-          
+            <img
+              src="/logo png1.png"
+              alt="RentSetters Logo"
+              className="w-10 h-10 object-cover"
+            />
+            <span
+              className="text-white font-bold text-xl tracking-wide"
+              style={{ fontFamily: "MyFont" }}
+            >
+              RentSetters
+            </span>
           </div>
         </a>
+
+        {/* RIGHT SIDE SECTION (mobile button + menu button) */}
+        <div className="flex items-center gap-3 md:hidden">
+
+          {/* MOBILE "List or Find Property" BUTTON */}
+          <a
+            target="_blank"
+            href={PROPERTY_LINK}
+            className="property-button text-white font-semibold px-3 py-2 rounded-lg shadow-md text-sm transition"
+          >
+            List / Find Property
+          </a>
+
+          {/* MOBILE MENU BUTTON */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="text-white text-3xl"
+          >
+            {open ? <HiX /> : <HiMenu />}
+          </button>
+        </div>
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-8">
@@ -80,7 +100,7 @@ export default function Navbar() {
           <NavItem label="Area" href="#areas" />
           <NavItem label="Contact" href="#contact" />
 
-          {/* BUTTON */}
+          {/* DESKTOP BUTTON */}
           <a
             target="_blank"
             href={PROPERTY_LINK}
@@ -89,14 +109,6 @@ export default function Navbar() {
             List or Find Property
           </a>
         </div>
-
-        {/* MOBILE MENU BUTTON */}
-        <button
-          onClick={() => setOpen(!open)}
-          className="text-white md:hidden text-3xl"
-        >
-          {open ? <HiX /> : <HiMenu />}
-        </button>
       </div>
 
       {/* MOBILE MENU */}
@@ -106,28 +118,10 @@ export default function Navbar() {
         }`}
       >
         <div className="flex flex-col items-center gap-4 text-white text-lg font-medium">
-          <a onClick={() => setOpen(false)} href="#about">
-            About
-          </a>
-          <a onClick={() => setOpen(false)} href="#services">
-            Services
-          </a>
-          <a onClick={() => setOpen(false)} href="#areas">
-            Area
-          </a>
-          <a onClick={() => setOpen(false)} href="#contact">
-            Contact
-          </a>
-
-          {/* MOBILE BUTTON */}
-          <a
-            target="_blank"
-            onClick={() => setOpen(false)}
-            href={PROPERTY_LINK}
-            className="property-button px-4 py-2 rounded-lg shadow text-white "
-          >
-            List or Find Property
-          </a>
+          <a onClick={() => setOpen(false)} href="#about">About</a>
+          <a onClick={() => setOpen(false)} href="#services">Services</a>
+          <a onClick={() => setOpen(false)} href="#areas">Area</a>
+          <a onClick={() => setOpen(false)} href="#contact">Contact</a>
         </div>
       </div>
     </nav>
