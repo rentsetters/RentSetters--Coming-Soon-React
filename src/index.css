@@ -3,6 +3,9 @@
   font-family: "MyFont";
   src: url("/fonts/Arista-Pro-Light-trial.ttf") format("truetype");
 }
+html {
+  scroll-behavior: smooth;
+}
 
 .bg-landing {
   background-image: url('/house img.jpg');

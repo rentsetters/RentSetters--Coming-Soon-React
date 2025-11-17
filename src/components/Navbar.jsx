@@ -1,9 +1,39 @@
 import React, { useState, useEffect } from "react";
 import { HiMenu, HiX } from "react-icons/hi";
+import { motion } from "framer-motion";
 
 // 🔗 GLOBAL LINK
 const PROPERTY_LINK =
   "https://docs.google.com/forms/d/e/1FAIpQLSe1G0A6BjzUyeZONN8mazt3Eo9FB9YkuFXnxWGoSa0-7v0HFA/viewform";
+
+// Reusable Animated Menu Item
+function NavItem({ label, href }) {
+  return (
+    <a
+      href={href}
+      className="relative group hidden md:block text-white font-semibold text-sm"
+    >
+      {/* Text with bounce */}
+      <motion.span
+        whileHover={{ y: -3 }} // bounce upward slightly
+        transition={{ type: "spring", stiffness: 300, damping: 15 }}
+        className="inline-block"
+      >
+        {label}
+      </motion.span>
+
+      {/* Underline animation */}
+      <span
+        className="
+          pointer-events-none absolute left-1/2 -bottom-1
+          h-0.5 w-0 bg-white
+          group-hover:w-full group-hover:left-0
+          transition-all duration-300 ease-out
+        "
+      ></span>
+    </a>
+  );
+}
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,44 +47,38 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 
-      ${
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
         scrolled || open
           ? "bg-black/90 backdrop-blur-md shadow-lg"
           : "bg-transparent"
-      }
-      `}
+      }`}
     >
       <div className="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* LEFT: Logo + Name */}
-        <div className="flex items-center gap-3">
-          <img
-            src="/logo png1.png"
-            alt="RentSetters Logo"
-            className="w-10 h-10 object-cover"
-          />
-          <span
-            className="text-white font-bold text-xl tracking-wide"
-            style={{ fontFamily: "MyFont" }}
-          >
-            RentSetters
-          </span>
-        </div>
+        <a href="#">
+          <div className="flex items-center gap-3">
+        
+              <img
+                src="/logo png1.png"
+                alt="RentSetters Logo"
+                className="w-10 h-10 object-cover"
+              />
+              <span
+                className="text-white font-bold text-xl tracking-wide"
+                style={{ fontFamily: "MyFont" }}
+              >
+                RentSetters
+              </span>
+          
+          </div>
+        </a>
 
         {/* DESKTOP MENU */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#about" className="text-white hover:text-indigo-300 transition text-sm font-semibold">
-            About
-          </a>
-          <a href="#services" className="text-white hover:text-indigo-300 transition text-sm font-semibold">
-            Services
-          </a>
-          <a href="#areas" className="text-white hover:text-indigo-300 transition text-sm font-semibold">
-            Area
-          </a>
-          <a href="#contact" className="text-white hover:text-indigo-300 transition text-sm font-semibold">
-            Contact
-          </a>
+          <NavItem label="About" href="#about" />
+          <NavItem label="Services" href="#services" />
+          <NavItem label="Area" href="#areas" />
+          <NavItem label="Contact" href="#contact" />
 
           {/* BUTTON */}
           <a
@@ -75,23 +99,23 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* MOBILE MENU DROPDOWN */}
+      {/* MOBILE MENU */}
       <div
-        className={`md:hidden bg-black/90 backdrop-blur-md transition-all duration-300 overflow-hidden
-          ${open ? "max-h-60 py-2" : "max-h-0 py-0"}
-        `}
+        className={`md:hidden bg-black/90 backdrop-blur-md transition-all duration-300 overflow-hidden ${
+          open ? "max-h-60 py-2" : "max-h-0 py-0"
+        }`}
       >
         <div className="flex flex-col items-center gap-4 text-white text-lg font-medium">
-          <a onClick={() => setOpen(false)} href="#about" className="hover:text-indigo-300">
+          <a onClick={() => setOpen(false)} href="#about">
             About
           </a>
-          <a onClick={() => setOpen(false)} href="#services" className="hover:text-indigo-300">
+          <a onClick={() => setOpen(false)} href="#services">
             Services
           </a>
-          <a onClick={() => setOpen(false)} href="#areas" className="hover:text-indigo-300">
+          <a onClick={() => setOpen(false)} href="#areas">
             Area
           </a>
-          <a onClick={() => setOpen(false)} href="#contact" className="hover:text-indigo-300">
+          <a onClick={() => setOpen(false)} href="#contact">
             Contact
           </a>
 
@@ -100,7 +124,7 @@ export default function Navbar() {
             target="_blank"
             onClick={() => setOpen(false)}
             href={PROPERTY_LINK}
-            className="property-button px-4 py-2 rounded-lg shadow text-white"
+            className="property-button px-4 py-2 rounded-lg shadow text-white "
           >
             List or Find Property
           </a>

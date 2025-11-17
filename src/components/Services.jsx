@@ -46,7 +46,7 @@ export default function Services() {
       </div>
 
       {/* Cards */}
-      <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
+      <div data-aos="fade-up" className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto px-6">
         {serviceList.map((item, i) => (
           <div
             key={i}

@@ -1,4 +1,5 @@
 import { MapPin } from "lucide-react";
+import { motion } from "motion/react";
 
 const locations = [
   "Kakkanad",
@@ -57,9 +58,19 @@ export default function Areas() {
       </div>
       <section className="w-full bg-[#0d1321] py-32 flex flex-col items-center text-center px-4 mt-7">
         {/* Heading with pulse animation */}
-        <h1 className="text-4xl md:text-5xl font-extrabold text-[#9b552f] animate-pulse-fast">
+        <motion.h1
+          className="text-4xl md:text-5xl font-extrabold text-[#9b552f]"
+          animate={{
+            color: ["#ffffff", "#FF7315", "#ffffff"], // fade between colors
+          }}
+          transition={{
+            duration: 1,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
           A Fully Functional RentSetters Web App Is Coming Soon!
-        </h1>
+        </motion.h1>
 
         {/* Subtext */}
         <p className="text-gray-300 text-lg md:text-xl mt-6 max-w-3xl leading-relaxed">
