@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { SpeedInsights } from "@vercel/speed-insights/react"
+import { Analytics } from "@vercel/analytics/react"
 
 AOS.init({
   duration: 800, // animation duration
@@ -13,6 +14,7 @@ AOS.init({
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <SpeedInsights/>
+    <Analytics/>
     <App />
   </StrictMode>
 );
