@@ -17,3 +17,8 @@ The page includes a modern navbar, smooth animations, custom branding, and links
 - Tailwind CSS
 - Framer Motion
 - React Icons
+
+<p align="center">
+  <img src="src/assets/img1.png" width="45%" />
+  <img src="src/assets/img2.png" width="45%" />
+</p>
