@@ -22,7 +22,7 @@ export default function Footer() {
           Instagram
         </a>
         <a
-          href="https://www.facebook.com/profile.php?id=61583524947267"
+          href="https://www.facebook.com/share/1BEoFwF1xX/"
           target="_blank"
           rel="noopener"
           className="underline"
